@@ -41,6 +41,7 @@ public class Eventos extends Fragment {
         listaAsuntos.add("Vigilancia Vecinal");
         listaAsuntos.add("Marcha");
         listaAsuntos.add("Día de reciclaje");
+        listaAsuntos.add("Ayuda comunitaria");
 
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, listaAsuntos);
         spnasunto.setAdapter(adapter);

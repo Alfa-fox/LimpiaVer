@@ -1,5 +1,6 @@
 package com.proyectos.pronet.limpiaver;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,7 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class Principal extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, Eventos.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Eventos.OnFragmentInteractionListener, quejas.OnFragmentInteractionListener {
 
     FragmentManager fm = getSupportFragmentManager();
 
@@ -27,14 +28,14 @@ public class Principal extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Quiten esto, no sirve", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -87,11 +88,13 @@ public class Principal extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            Intent intent = new Intent(Principal.this, loginUb.class);
+            startActivity(intent);
         } else if (id == R.id.show) {
             fm.beginTransaction().replace(R.id.container, new Eventos()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_manage) {
+            fm.beginTransaction().replace(R.id.container, new quejas()).addToBackStack(null).commit();
 
         } else if (id == R.id.nav_share) {
 
