@@ -25,8 +25,10 @@ public class quejas extends Fragment {
 
     View vista;
     Spinner spnreport;
-    Spinner spncasos;
     Spinner spnsolicitud;
+    Button btnenvi;
+    EditText nomcamp, libtxtcom;
+    int cont = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,26 +45,38 @@ public class quejas extends Fragment {
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, listaReports);
         spnreport.setAdapter(adapter);
 
-        spncasos = vista.findViewById(R.id.spncasos);
-        ArrayList<String> listaCasos = new ArrayList<>();
-        listaCasos.add("Molesta");
-        listaCasos.add("Dificulta paso vehicular");
-        listaCasos.add("Dificulta paso peatonal");
-        listaCasos.add("Mal olor");
-        listaCasos.add("Foco de infección");
-        ArrayAdapter<CharSequence> adapter1 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, listaCasos);
-        spncasos.setAdapter(adapter1);
-
-        spnsolicitud = vista.findViewById(R.id.spnsolicitud);
+        spnsolicitud = vista.findViewById(R.id.spncolonia);
         ArrayList<String> listaSolicitud = new ArrayList<>();
-        listaSolicitud.add("Ayuda departamental");
-        listaSolicitud.add("Atención departamental");
-        listaSolicitud.add("Visita de encargados");
-        listaSolicitud.add("¡¡VISITA URGENTE!!");
+        listaSolicitud.add("Reserva 1");
+        listaSolicitud.add("Formando hogar");
+        listaSolicitud.add("Rio medio");
+        listaSolicitud.add("Amapolas");
         ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, listaSolicitud);
         spnsolicitud.setAdapter(adapter2);
 
+        nomcamp = vista.findViewById(R.id.nomtxt);
+        libtxtcom = vista.findViewById(R.id.libtxtcom);
+        btnenvi = vista.findViewById(R.id.quejabtn);
+        btnenvi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(nomcamp.getText().equals("") && libtxtcom.getText().equals("")){
+                    Toast.makeText(getContext(),"Inserte Texto en los campos", Toast.LENGTH_SHORT).show();
+                }else{
+                    nomcamp.setText(null);
+                    libtxtcom.setText(null);
+                    Toast.makeText(getContext(),"Queja enviada", Toast.LENGTH_SHORT).show();
+                    cont = 1;
+                    btnenvi.setEnabled(false);
+                }
+
+            }
+        });
+
+
         return vista;
+
         //return inflater.inflate(R.layout.fragment_quejas, container, false);
     }
 

@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Eventos.OnFragmentInteractionListener, quejas.OnFragmentInteractionListener {
@@ -36,6 +37,8 @@ public class Principal extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
+
+        Toast.makeText(this, "BIENVENID@", Toast.LENGTH_LONG).show();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

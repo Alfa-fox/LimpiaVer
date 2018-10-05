@@ -15,15 +15,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import java.util.ArrayList;
 
-
 public class Eventos extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
     View vista;
     Button btndato;
-    EditText dato;
-    Spinner spnasunto;
+    EditText dato, campocoment;
+    Spinner spnasunto,spnmotvs;
 
     public Eventos() {
     }
@@ -46,14 +45,27 @@ public class Eventos extends Fragment {
         ArrayAdapter<CharSequence> adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, listaAsuntos);
         spnasunto.setAdapter(adapter);
 
+        spnmotvs = vista.findViewById(R.id.spnmotvs);
+        ArrayList<String> listaMotvs = new ArrayList<>();
+        listaMotvs.add("Caso 1");
+        listaMotvs.add("Caso 2");
+        listaMotvs.add("Caso 3");
+        listaMotvs.add("Caso 4");
+        listaMotvs.add("Caso 5");
+
+        ArrayAdapter<CharSequence> adapter1 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, listaMotvs);
+        spnmotvs.setAdapter(adapter1);
+
         dato = vista.findViewById(R.id.txttexto);
+        campocoment = vista.findViewById(R.id.campocoment);
         btndato = vista.findViewById(R.id.buttonmostrar);
         btndato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String cosa = dato.getText().toString();
-                Toast.makeText(getContext(),cosa + " JAJA SALU2", Toast.LENGTH_SHORT).show();
                 dato.setText(null);
+                campocoment.setText(null);
+                Toast.makeText(getContext(),"Solicitud confirmada", Toast.LENGTH_SHORT).show();
+                btndato.setEnabled(false);
             }
         });
 
