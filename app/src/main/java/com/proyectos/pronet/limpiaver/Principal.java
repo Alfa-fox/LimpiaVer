@@ -18,7 +18,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 public class Principal extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, Eventos.OnFragmentInteractionListener, quejas.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, Eventos.OnFragmentInteractionListener, quejas.OnFragmentInteractionListener, inicio.OnFragmentInteractionListener {
 
     FragmentManager fm = getSupportFragmentManager();
 
@@ -89,7 +89,7 @@ public class Principal extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            fm.beginTransaction().replace(R.id.container, new inicio()).addToBackStack(null).commit();
         } else if (id == R.id.nav_gallery) {
             Intent intent = new Intent(Principal.this, loginUb.class);
             startActivity(intent);
